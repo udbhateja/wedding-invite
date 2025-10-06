@@ -1,0 +1,108 @@
+{
+  "nav": ["Home", "Timeline", "Gallery", "Party", "Events", "RSVP"],
+  "hero": {
+    "tagline": "SO RO",
+    "names": ["Sophia", "Robert"],
+    "date": "March 28, 2025",
+    "button": "View Details"
+  },
+  "intro": {
+    "heading": "WE'RE GETTING MARRIED!",
+    "bride": {
+      "name": "Lorene Sophia",
+      "role": "The Bride",
+      "bio": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam exercitation.",
+      "social": ["facebook", "instagram", "dribbble"]
+    },
+    "groom": {
+      "name": "Robert Bieber",
+      "role": "The Groom",
+      "bio": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam exercitation.",
+      "social": ["facebook", "instagram", "behance"]
+    }
+  },
+  "timeline": [
+    {
+      "title": "First time we met",
+      "description": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam.",
+      "year": "2018"
+    },
+    {
+      "title": "Our first date",
+      "description": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam.",
+      "year": "2019"
+    },
+    {
+      "title": "Our marriage proposal",
+      "description": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam.",
+      "year": "2020"
+    },
+    {
+      "title": "Our engagement",
+      "description": "Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam.",
+      "year": "2023"
+    }
+  ],
+  "gallery": [
+    "cake.jpg",
+    "couple-smile.jpg",
+    "bouquet.jpg",
+    "kiss.jpg",
+    "hands.jpg",
+    "ceremony.jpg"
+  ],
+  "countdown": {
+    "heading": "Start Celebration",
+    "labels": ["Days", "Hours", "Minutes", "Seconds"],
+    "target": "2025-03-28T00:00:00"
+  },
+  "collage": {
+    "labels": ["Emotion", "Forever"],
+    "caption": "Best Friends"
+  },
+  "party": [
+    {"name": "Caroline Smith", "role": "Bridesmaid"},
+    {"name": "Evan Thomson", "role": "Groomsman"},
+    {"name": "Bryce Harrison", "role": "Groomsman"},
+    {"name": "Paula Osuna", "role": "Bridesmaid"},
+    {"name": "Andre Morales", "role": "Groomsman"},
+    {"name": "Samantha Jones", "role": "Bridesmaid"},
+    {"name": "Nick Temperance", "role": "Groomsman"},
+    {"name": "Lorence Lomas", "role": "Groomsman"}
+  ],
+  "events": [
+    {
+      "date": "24 March",
+      "title": "The Ceremony",
+      "details": "St. Anthony Church, 780 Ocean Drive, Miami, USA"
+    },
+    {
+      "date": "24 March",
+      "title": "The Reception",
+      "details": "The Seaside Lounge, 900 Beach Ave, Miami, USA"
+    },
+    {
+      "date": "25 March",
+      "title": "The After Party",
+      "details": "The Palm Diner, 122 Ocean Blvd, Miami, USA"
+    }
+  ],
+  "rsvp": {
+    "heading": "Are You Attending?",
+    "fields": [
+      "Enter your name",
+      "Your email address",
+      "Number of guests",
+      "Will you attend?",
+      "Your message"
+    ],
+    "button": "Send Message",
+    "note": "Please let us know as soon as possible. You can email us directly at hello@crafto.com"
+  },
+  "footer": {
+    "call": "Call us directly",
+    "phone": "+00 252 365",
+    "email": "info@soro.com",
+    "credit": "ThemeZee"
+  }
+}
