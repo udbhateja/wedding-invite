@@ -1,7 +1,7 @@
 'use strict';
 
 const CONTENT = {
-  nav: ['Home', 'Couple', 'Events'],
+  nav: ['Home', 'Couple', 'Events', 'Contact'],
   hero: {
     tagline: 'UK',
     names: ['Komal', 'Uday'],
@@ -66,27 +66,23 @@ const CONTENT = {
 const SECTION_IDS = {
   Home: 'home',
   Couple: 'couple',
-  Events: 'events'
+  Events: 'events',
+  Contact: 'contact'
 };
 
 function renderHeader(content) {
+  const navItems = content.nav
+    .map(item => `<li><a href="#${SECTION_IDS[item]}">${item}</a></li>`);
+  navItems.splice(2, 0, `<li class="header__monogram-item">U <span class="monogram-heart">♥</span> K</li>`);
+
   return `
     <header class="site-header" id="top">
       <div class="container header__inner">
-        <div class="header__logo">
-          <span class="logo-mark">crafto</span>
-          <span class="logo-tagline">ai-powered wordpress theme</span>
-        </div>
         <nav class="header__nav" aria-label="Primary">
           <ul class="header__menu">
-            ${content.nav
-              .map(item => `<li><a href="#${SECTION_IDS[item]}">${item}</a></li>`)
-              .join('')}
+            ${navItems.join('')}
           </ul>
         </nav>
-        <div class="header__monogram">
-          <span class="monogram">U <span class="monogram-heart">♥</span> K</span>
-        </div>
       </div>
     </header>
   `;
@@ -235,7 +231,7 @@ function renderEvents(events) {
 
 function renderFooter(footer) {
   return `
-    <footer class="site-footer">
+    <footer class="site-footer" id="${SECTION_IDS.Contact}">
       <div class="container site-footer__bar">
         <div class="site-footer__item">
           <span class="site-footer__label">${footer.phoneLabel}</span>
@@ -297,7 +293,7 @@ function initCountdown() {
     const m = Math.floor((seconds % (60 * 60)) / 60);
     const s = seconds % 60;
 
-    values.days.textContent = String(d).padStart(3, '0');
+    values.days.textContent = String(d);
     values.hours.textContent = String(h).padStart(2, '0');
     values.minutes.textContent = String(m).padStart(2, '0');
     values.seconds.textContent = String(s).padStart(2, '0');
