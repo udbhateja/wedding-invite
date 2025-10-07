@@ -509,19 +509,6 @@ button {
   letter-spacing: 0.12em;
 }
 
-.intro__background {
-  position: absolute;
-  inset: 6rem 0 auto;
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 16vw, 12rem);
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(45, 41, 40, 0.06);
-  text-align: center;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
 .intro .container {
   position: relative;
   z-index: 2;
@@ -645,10 +632,6 @@ button {
     padding: var(--spacing-lg);
   }
 
-  .intro__background {
-    font-size: 4rem;
-    letter-spacing: 0.12em;
-  }
 }
 
 .countdown {
@@ -688,8 +671,8 @@ button {
 
 .countdown__heading .eyebrow {
   color: var(--color-text-primary);
-  letter-spacing: 0.32em;
-  font-size: clamp(2.1rem, 4vw, 2.6rem);
+  letter-spacing: 0.2em;
+  font-size: clamp(1.9rem, 3.5vw, 2.4rem);
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -697,21 +680,22 @@ button {
 .countdown__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--spacing-lg);
+  gap: clamp(20px, 4vw, 48px);
 }
 
 .countdown__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: 2px;
   position: relative;
 }
 
 .countdown__value {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 4.5rem);
-  letter-spacing: 0.3em;
+  letter-spacing: 0.18em;
+  line-height: 1;
   color: var(--color-accent-pink);
 }
 
@@ -725,11 +709,12 @@ button {
 .countdown__item:not(:last-child)::after {
   content: ':';
   position: absolute;
-  right: -0.9em;
   top: 50%;
+  left: calc(100% + clamp(8px, 1.5vw, 18px));
   transform: translateY(-50%);
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 4.5rem);
+  line-height: 1;
   color: var(--color-text-primary);
 }
 
@@ -746,7 +731,11 @@ button {
   }
 
   .countdown__item:not(:last-child)::after {
-    right: -0.6em;
+    left: calc(100% + clamp(6px, 1vw, 12px));
+  }
+
+  .countdown__heading .eyebrow {
+    font-size: clamp(2.1rem, 4.5vw, 2.4rem);
   }
 }
 
@@ -754,6 +743,12 @@ button {
   .countdown__grid {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: var(--spacing-sm);
+  }
+
+  .countdown__heading .eyebrow {
+    white-space: normal;
+    line-height: 1.3;
   }
 
   .countdown__item:not(:last-child)::after {

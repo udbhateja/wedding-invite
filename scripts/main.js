@@ -136,7 +136,6 @@ function renderIntro(intro) {
 
   return `
     <section class="intro section" id="${SECTION_IDS.Couple}">
-      <div class="intro__background" aria-hidden="true">${intro.heading}</div>
       <div class="container">
         <header class="section-heading intro__heading">
           <h2>${intro.heading}</h2>
