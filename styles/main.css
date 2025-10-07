@@ -522,22 +522,26 @@ button {
 }
 
 .profile-card {
-  background: #ffffff;
+  background: transparent;
   padding: var(--spacing-xl) var(--spacing-lg);
   border-radius: 32px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  text-align: center;
 }
 
 .profile-card__role {
-  align-self: flex-start;
+  align-self: center;
+  font-weight: 600;
 }
 
 .profile-card__name {
   font-size: clamp(2rem, 4vw, 2.5rem);
   letter-spacing: 0.16em;
+  text-align: center;
+  margin-top: calc(var(--spacing-sm) * -1);
 }
 
 .profile-card__bio {
@@ -547,8 +551,7 @@ button {
 }
 
 .profile-card__social-list {
-  display: flex;
-  gap: var(--spacing-sm);
+  display: none;
 }
 
 .profile-card__social {
@@ -687,7 +690,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   position: relative;
 }
 
@@ -709,7 +712,7 @@ button {
 .countdown__item:not(:last-child)::after {
   content: ':';
   position: absolute;
-  top: 50%;
+  top: clamp(1.5rem, 4vw, 2.25rem);
   left: calc(100% + clamp(8px, 1.5vw, 18px));
   transform: translateY(-50%);
   font-family: var(--font-display);
