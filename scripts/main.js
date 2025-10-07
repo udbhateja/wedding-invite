@@ -58,7 +58,7 @@ const CONTENT = {
     phone: '+00 252 365',
     emailLabel: 'Send a message',
     email: 'hello@udayandkomal.com',
-    monogram: 'U ♥ K',
+    monogram: 'U <span class="monogram-heart">♥</span> K',
     credit: 'ThemeZee'
   }
 };
@@ -238,10 +238,6 @@ function renderFooter(footer) {
         </div>
         <div class="site-footer__monogram">
           ${footer.monogram}
-        </div>
-        <div class="site-footer__item">
-          <span class="site-footer__label">${footer.emailLabel}</span>
-          <a href="mailto:${footer.email}" class="site-footer__link">${footer.email}</a>
         </div>
       </div>
       <div class="site-footer__credit">

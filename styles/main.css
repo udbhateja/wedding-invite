@@ -943,15 +943,16 @@ button {
 }
 
 .site-footer {
-  background: var(--color-background-dark);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--color-background-cream);
+  color: var(--color-text-primary);
   padding: var(--spacing-xl) 0 var(--spacing-lg);
+  position: relative;
 }
 
 .site-footer__bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--spacing-lg);
   flex-wrap: wrap;
 }
@@ -966,14 +967,14 @@ button {
   font-size: 0.75rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-muted);
 }
 
 .site-footer__link {
   font-family: var(--font-display);
   font-size: 1.4rem;
   letter-spacing: 0.24em;
-  color: #ffffff;
+  color: var(--color-text-primary);
   transition: color 0.2s ease;
 }
 
@@ -985,26 +986,31 @@ button {
 .site-footer__monogram {
   font-family: var(--font-display);
   letter-spacing: 0.3em;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer__monogram .monogram-heart {
+  color: var(--color-accent-pink);
+  font-size: 2rem;
 }
 
 .site-footer__credit {
-  margin-top: var(--spacing-lg);
-  text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  display: none;
 }
 
 @media (max-width: 640px) {
   .site-footer__bar {
     flex-direction: column;
     text-align: center;
+    gap: var(--spacing-md);
   }
 
   .site-footer__monogram {
-    order: -1;
+    font-size: 2rem;
   }
 }
