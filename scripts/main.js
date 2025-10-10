@@ -3,7 +3,7 @@
 const CONTENT = {
   nav: ['Home', 'Couple', 'Events', 'Contact'],
   hero: {
-    tagline: 'UK',
+    tagline: 'UD-KO',
     names: ['Komal', 'Uday'],
     date: 'November 21, 2025',
     button: 'View Details'
