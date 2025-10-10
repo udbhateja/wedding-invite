@@ -104,12 +104,29 @@ h6 {
   color: var(--color-text-primary);
 }
 
-h1 { font-size: clamp(3.5rem, 6vw, 4.5rem); }
-h2 { font-size: clamp(2.5rem, 4.5vw, 3.25rem); }
-h3 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
-h4 { font-size: clamp(1.5rem, 2.5vw, 1.75rem); }
-h5 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
-h6 { font-size: clamp(1.1rem, 1.5vw, 1.25rem); }
+h1 {
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2.5rem, 4.5vw, 3.25rem);
+}
+
+h3 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+h4 {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+}
+
+h5 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+h6 {
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+}
 
 .heading-accent {
   font-family: var(--font-accent);
@@ -154,18 +171,50 @@ button {
   padding: 0 var(--spacing-md);
 }
 
-.text-center { text-align: center; }
-.text-uppercase { text-transform: uppercase; }
-.text-muted { color: var(--color-text-light); }
+.text-center {
+  text-align: center;
+}
 
-.flex { display: flex; }
-.flex-wrap { flex-wrap: wrap; }
-.flex-column { flex-direction: column; }
-.flex-between { justify-content: space-between; }
-.flex-center { justify-content: center; align-items: center; }
-.gap-sm { gap: var(--spacing-sm); }
-.gap-md { gap: var(--spacing-md); }
-.gap-lg { gap: var(--spacing-lg); }
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-muted {
+  color: var(--color-text-light);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
 
 .grid {
   display: grid;
@@ -258,7 +307,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 96px;
+  min-height: 64px;
+  padding: var(--spacing-sm) 0;
+  position: relative;
 }
 
 .header__nav {
@@ -271,7 +322,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(16px, 3vw, 48px);
+  gap: clamp(24px, 4vw, 64px);
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.16em;
@@ -285,37 +336,112 @@ button {
 .header__menu a {
   color: var(--color-text-primary);
   transition: color 0.2s ease;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 6px;
+  display: block;
 }
 
 .header__menu a:hover,
 .header__menu a:focus {
   color: var(--color-accent-pink);
+  background: rgba(255, 1, 115, 0.08);
 }
 
-.header__monogram-item {
+.header__monogram {
   font-family: var(--font-display);
   letter-spacing: 0.32em;
   font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 4px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: var(--color-header);
+  padding: 0 var(--spacing-sm);
+}
+
+.header__monogram-item {
+  display: none;
+  /* Hide the old monogram item */
 }
 
 .monogram-heart {
   color: var(--color-accent-pink);
 }
 
-@media (max-width: 720px) {
-  .header__menu {
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
+.header__monogram-spacer {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* Mobile-optimized navigation */
+@media (max-width: 768px) {
+  .header__inner {
+    min-height: 72px;
+    padding: var(--spacing-sm) 0;
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
 
-  .header__monogram-item {
-    font-size: 1.2rem;
+  .header__monogram {
+    position: static;
+    transform: none;
+    font-size: 1.5rem;
     letter-spacing: 0.28em;
+    background: transparent;
+    padding: 0;
+    order: 1;
+  }
+
+  .header__nav {
+    order: 2;
+    width: 100%;
+  }
+
+  .header__menu {
+    justify-content: space-around;
+    gap: var(--spacing-xs);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+  }
+
+  .header__menu a {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.85rem;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .header__monogram-spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__inner {
+    min-height: 68px;
+    padding: var(--spacing-sm) 0;
+  }
+
+  .header__monogram {
+    font-size: 1.4rem;
+    letter-spacing: 0.24em;
+  }
+
+  .header__menu {
+    gap: 4px;
+  }
+
+  .header__menu a {
+    font-size: 0.8rem;
+    padding: var(--spacing-xs);
+    min-height: 36px;
   }
 }
 
@@ -339,7 +465,7 @@ button {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(255, 253, 252, 0.4) 0%, rgba(255, 253, 252, 0.85) 75%, var(--color-background) 100%),
-              url('../assets/images/hero-bg.jpg') center / cover no-repeat;
+    url('../assets/images/hero-bg.jpg') center / cover no-repeat;
   transform: scale(1.02);
   filter: saturate(1.05);
 }
@@ -486,15 +612,15 @@ button {
 
 @media (max-width: 960px) {
   .hero__inner {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
     min-height: 640px;
     padding-bottom: 120px;
   }
 
   .hero__card {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
     padding: var(--spacing-lg);
   }
 
@@ -642,10 +768,21 @@ button {
   filter: saturate(0) brightness(0.15);
 }
 
-.profile-card__social-icon--facebook { background-image: url('../assets/icons/facebook.svg'); }
-.profile-card__social-icon--instagram { background-image: url('../assets/icons/instagram.svg'); }
-.profile-card__social-icon--dribbble { background-image: url('../assets/icons/dribbble.svg'); }
-.profile-card__social-icon--behance { background-image: url('../assets/icons/behance.svg'); }
+.profile-card__social-icon--facebook {
+  background-image: url('../assets/icons/facebook.svg');
+}
+
+.profile-card__social-icon--instagram {
+  background-image: url('../assets/icons/instagram.svg');
+}
+
+.profile-card__social-icon--dribbble {
+  background-image: url('../assets/icons/dribbble.svg');
+}
+
+.profile-card__social-icon--behance {
+  background-image: url('../assets/icons/behance.svg');
+}
 
 .intro__photo {
   position: relative;
@@ -824,6 +961,7 @@ button {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }

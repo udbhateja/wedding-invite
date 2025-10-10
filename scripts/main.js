@@ -73,16 +73,22 @@ const SECTION_IDS = {
 function renderHeader(content) {
   const navItems = content.nav
     .map(item => `<li><a href="#${SECTION_IDS[item]}">${item}</a></li>`);
-  navItems.splice(2, 0, `<li class="header__monogram-item">U <span class="monogram-heart">♥</span> K</li>`);
+  
+  // Split navigation items to place monogram in the center
+  const leftItems = navItems.slice(0, 2);
+  const rightItems = navItems.slice(2);
 
   return `
     <header class="site-header" id="top">
       <div class="container header__inner">
         <nav class="header__nav" aria-label="Primary">
           <ul class="header__menu">
-            ${navItems.join('')}
+            ${leftItems.join('')}
+            <li class="header__monogram-spacer"></li>
+            ${rightItems.join('')}
           </ul>
         </nav>
+        <div class="header__monogram">U <span class="monogram-heart">♥</span> K</div>
       </div>
     </header>
   `;
