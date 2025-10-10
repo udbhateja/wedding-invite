@@ -99,7 +99,6 @@ function renderHero(hero) {
     <section class="hero" id="${SECTION_IDS.Home}">
       <div class="hero__media">
         <div class="hero__image" role="presentation"></div>
-        <div class="hero__torn-edge" aria-hidden="true"></div>
       </div>
       <div class="container hero__inner">
         <div class="hero__content">

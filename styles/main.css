@@ -457,29 +457,13 @@ button {
 .hero__image {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 253, 252, 0.4) 0%, rgba(255, 253, 252, 0.85) 75%, var(--color-background) 100%),
+  background: linear-gradient(180deg, rgba(255, 253, 252, 0.1) 0%, rgba(255, 253, 252, 0.3) 85%, rgba(255, 253, 252, 0.6) 100%),
     url('../assets/images/hero-bg.jpg') center / cover no-repeat;
   transform: scale(1.02);
   filter: saturate(1.05);
 }
 
-.hero__torn-edge {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 120px;
-  background: var(--color-background);
-  mask-image: radial-gradient(circle at 40px -30px, black 55%, transparent 56%);
-  -webkit-mask-image: radial-gradient(circle at 40px -30px, black 55%, transparent 56%);
-  mask-position: 0 0;
-  mask-size: 120px 120px;
-  mask-repeat: repeat-x;
-  -webkit-mask-position: 0 0;
-  -webkit-mask-size: 120px 120px;
-  -webkit-mask-repeat: repeat-x;
-  opacity: 0.85;
-}
+/* Torn edge effect removed */
 
 .hero__inner {
   position: relative;
