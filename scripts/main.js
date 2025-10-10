@@ -102,15 +102,7 @@ function renderHero(hero) {
         <div class="hero__torn-edge" aria-hidden="true"></div>
       </div>
       <div class="container hero__inner">
-        <div class="hero__card">
-          <span class="hero__tag">${hero.tagline}</span>
-          <div class="hero__names">
-            <span class="hero__name hero__name--bride">${hero.names[0]}</span>
-            <span class="hero__amp">and</span>
-            <span class="hero__name hero__name--groom">${hero.names[1]}</span>
-          </div>
-          <p class="hero__date">${hero.date}</p>
-          <button class="button hero__cta">${hero.button}</button>
+        <div class="hero__content">
         </div>
       </div>
     </section>

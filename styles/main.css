@@ -6,13 +6,11 @@
   --color-background: #fffdfc;
   --color-background-cream: #f7f2ef;
   --color-background-dark: #1a1b24;
-  --color-header: #f4ede6;
   --color-text-primary: #2d2928;
   --color-text-muted: #6f6f73;
   --color-text-light: #9fa0a7;
   --color-accent-pink: #ff0173;
   --color-accent-orange: #e9783c;
-  --color-hero-circle: #f4ebec;
   --color-divider: #ebe5e3;
   --color-form-background: #f7f2ef;
   --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.06);
@@ -295,7 +293,7 @@ button {
 
 
 .site-header {
-  background: var(--color-header);
+  background: var(--color-background-cream);
   color: var(--color-text-primary);
   position: sticky;
   top: 0;
@@ -359,22 +357,17 @@ button {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  background: var(--color-header);
+  background: var(--color-background-cream);
   padding: 0 var(--spacing-sm);
-}
-
-.header__monogram-item {
-  display: none;
-  /* Hide the old monogram item */
-}
-
-.monogram-heart {
-  color: var(--color-accent-pink);
 }
 
 .header__monogram-spacer {
   flex: 1;
   min-width: 80px;
+}
+
+.monogram-heart {
+  color: var(--color-accent-pink);
 }
 
 /* Mobile-optimized navigation */
@@ -491,79 +484,46 @@ button {
 .hero__inner {
   position: relative;
   z-index: 1;
-  min-height: 760px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 160px;
+  padding-bottom: 80px;
+  padding-top: 40px;
 }
 
-.hero__card {
+/* Tablet and up */
+@media (min-width: 768px) {
+  .hero__inner {
+    min-height: 600px;
+    padding-bottom: 100px;
+    padding-top: 60px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .hero__inner {
+    min-height: 650px;
+    padding-bottom: 120px;
+    padding-top: 80px;
+  }
+}
+
+/* Hero content - simple layout without circle */
+.hero__content {
   position: relative;
   z-index: 2;
-  width: clamp(340px, 48vw, 560px);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: var(--color-hero-circle);
-  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.08);
-  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: var(--spacing-md);
-  text-align: center;
+  padding: var(--spacing-lg);
 }
 
-.hero__tag {
-  position: absolute;
-  top: calc(-1 * var(--hero-strap-offset));
-  left: 50%;
-  transform: translateX(-50%);
-  width: var(--hero-strap-width);
-  min-height: calc(var(--hero-strap-offset) + 60px);
-  max-height: clamp(260px, 38vw, 320px);
-  padding: clamp(22px, 4vw, 32px) clamp(12px, 1.6vw, 18px) clamp(16px, 4vw, 28px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-  color: #ffffff;
-  writing-mode: vertical-rl;
-  text-align: center;
-  z-index: 3;
-}
-
-.hero__tag::before,
-.hero__tag::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-}
-
-.hero__tag::before {
-  top: 0;
-  bottom: 0;
-  background: var(--color-background-dark);
-  z-index: -2;
-}
-
-.hero__tag::after {
-  top: 0;
-  height: clamp(48px, 7vw, 76px);
-  background: linear-gradient(180deg, rgba(233, 231, 236, 0.95) 0%, rgba(26, 27, 36, 0.88) 70%, rgba(26, 27, 36, 1) 100%);
-  z-index: -1;
-}
-
-.hero__tag span,
-.hero__tag {
-  text-orientation: mixed;
-}
+/* Hero tag removed - no longer needed */
 
 .hero__names {
   display: flex;
@@ -572,10 +532,29 @@ button {
   gap: var(--spacing-xs);
 }
 
+/* Mobile-first hero name typography */
 .hero__name {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 4.5rem);
-  letter-spacing: 0.25em;
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .hero__name {
+    font-size: 2.5rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .hero__name {
+    font-size: clamp(3.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.2em;
+  }
 }
 
 .hero__name--bride {
@@ -590,96 +569,58 @@ button {
   color: transparent;
 }
 
+/* Mobile-first hero typography */
 .hero__amp {
   font-family: var(--font-accent);
   font-style: italic;
-  font-size: 1.25rem;
-  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-light);
+  margin: 0;
 }
 
 .hero__date {
-  font-size: 1rem;
-  letter-spacing: 0.24em;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .hero__amp {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+  }
+  
+  .hero__date {
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .hero__amp {
+    font-size: 1.25rem;
+    letter-spacing: 0.18em;
+  }
+  
+  .hero__date {
+    font-size: 1rem;
+    letter-spacing: 0.24em;
+  }
 }
 
 .hero__cta {
   margin-top: var(--spacing-sm);
 }
 
-@media (max-width: 960px) {
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    min-height: 640px;
-    padding-bottom: 120px;
-  }
 
-  .hero__card {
-    position: relative;
-    z-index: 2;
-    padding: var(--spacing-lg);
-  }
 
-  .hero__tag {
-    top: calc(-1 * clamp(110px, 26vw, 160px));
-    min-height: calc(clamp(110px, 26vw, 160px) + 60px);
-    max-height: clamp(220px, 42vw, 300px);
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    letter-spacing: 0.34em;
-  }
-}
 
-@media (max-width: 640px) {
-  .hero {
-    padding-top: var(--spacing-xl);
-  }
-
-  .hero__inner {
-    min-height: 500px;
-    padding-bottom: 110px;
-  }
-
-  .hero__card {
-    width: min(280px, 84vw);
-    padding: var(--spacing-sm);
-    gap: var(--spacing-xs);
-  }
-
-  .hero__tag {
-    width: min(86px, 22vw);
-    top: calc(-1 * clamp(90px, 28vw, 118px));
-    min-height: calc(clamp(90px, 28vw, 118px) + 54px);
-    max-height: clamp(200px, 56vw, 260px);
-    font-size: clamp(0.8rem, 3vw, 0.92rem);
-    letter-spacing: 0.26em;
-    padding: clamp(16px, 5.5vw, 20px) 10px clamp(14px, 6vw, 24px);
-  }
-
-  .hero__name {
-    font-size: clamp(2.1rem, 16vw, 2.5rem);
-    letter-spacing: 0.12em;
-  }
-
-  .hero__amp {
-    font-size: 1rem;
-    letter-spacing: 0.14em;
-  }
-
-  .hero__date {
-    font-size: 0.85rem;
-    letter-spacing: 0.18em;
-  }
-
-  .hero__cta {
-    margin-top: var(--spacing-xs);
-    padding: 0.75rem 2.2rem;
-    font-size: 0.9rem;
-  }
-}
 
 .intro {
   background: var(--color-background);
