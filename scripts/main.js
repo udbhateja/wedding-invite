@@ -13,13 +13,13 @@ const CONTENT = {
     bride: {
       name: 'Komal',
       role: 'The Bride',
-      bio: 'Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam exercitation.',
+      bio: '',
       social: ['facebook', 'instagram', 'dribbble']
     },
     groom: {
       name: 'Uday',
       role: 'The Groom',
-      bio: 'Lorem ipsum consectetur adipiscing elit eiusmod tempor incididunt labore dolore magna minim veniam exercitation.',
+      bio: '',
       social: ['facebook', 'instagram', 'behance']
     }
   },
@@ -73,7 +73,7 @@ const SECTION_IDS = {
 function renderHeader(content) {
   const navItems = content.nav
     .map(item => `<li><a href="#${SECTION_IDS[item]}">${item}</a></li>`);
-  
+
   // Split navigation items to place monogram in the center
   const leftItems = navItems.slice(0, 2);
   const rightItems = navItems.slice(2);
@@ -158,14 +158,14 @@ function renderCountdown(countdown) {
         </header>
         <div class="countdown__grid" data-countdown data-target="${countdown.target}">
           ${countdown.labels
-            .map(
-              label => `
+      .map(
+        label => `
             <div class="countdown__item">
               <span class="countdown__value" data-count="${label.toLowerCase()}">000</span>
               <span class="countdown__label">${label}</span>
             </div>`
-            )
-            .join('')}
+      )
+      .join('')}
         </div>
       </div>
     </section>
@@ -205,8 +205,8 @@ function renderEvents(events) {
         </header>
         <div class="events__grid">
           ${events
-            .map(
-              event => `
+      .map(
+        event => `
             <article class="event-card">
               <div class="event-card__media">
                 <img src="${event.photo}" alt="${event.title}" loading="lazy">
@@ -217,8 +217,8 @@ function renderEvents(events) {
                 <p class="event-card__details">${event.details}</p>
               </div>
             </article>`
-            )
-            .join('')}
+      )
+      .join('')}
         </div>
       </div>
     </section>
