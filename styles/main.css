@@ -641,7 +641,7 @@ button {
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: 2px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -651,14 +651,15 @@ button {
 .profile-card__role {
   align-self: center;
   font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  text-align: center;
 }
 
 .profile-card__name {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   letter-spacing: 0.16em;
   text-align: center;
-  margin-top: calc(var(--spacing-xs) * -1);
-  margin-bottom: 0;
+  margin: 0;
   font-weight: 400;
 }
 
@@ -721,6 +722,13 @@ button {
   box-shadow: 0 44px 80px rgba(0, 0, 0, 0.16);
 }
 
+@media (min-width: 1081px) {
+  .intro__photo {
+    max-width: 600px;
+    width: 100%;
+  }
+}
+
 .intro__photo::after {
   content: '';
   position: absolute;
@@ -742,9 +750,7 @@ button {
 
   .intro__photo {
     grid-column: span 2;
-    max-width: 460px;
     justify-self: center;
-    transform: translateY(0);
   }
 }
 
@@ -755,7 +761,7 @@ button {
   }
 
   .intro__photo {
-    width: min(320px, 90vw);
+    width: 100%;
   }
 
   .profile-card {
