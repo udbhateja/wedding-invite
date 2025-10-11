@@ -744,30 +744,52 @@ button {
 
 @media (max-width: 1080px) {
   .intro__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    justify-items: center;
+    text-align: center;
   }
 
   .intro__photo {
-    grid-column: span 2;
     justify-self: center;
+    max-width: 400px;
+    order: 2;
+  }
+
+  .profile-card {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+  }
+
+  .profile-card--bride {
+    order: 1;
+  }
+
+  .profile-card--groom {
+    order: 3;
   }
 }
 
 @media (max-width: 720px) {
   .intro__grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-sm);
+    justify-items: center;
+    text-align: center;
   }
 
   .intro__photo {
+    max-width: 280px;
     width: 100%;
   }
 
   .profile-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+    width: 100%;
+    max-width: 300px;
   }
-
 }
 
 .countdown {
