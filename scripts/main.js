@@ -172,28 +172,7 @@ function renderCountdown(countdown) {
   `;
 }
 
-function renderCollage(collage) {
-  return `
-    <section class="collage section" id="collage">
-      <div class="container collage__inner">
-        <div class="collage__photo">
-          <img src="${collage.main}" alt="Komal hugging Uday" loading="lazy">
-          <div class="collage__overlay">Forever</div>
-        </div>
-        <div class="collage__polaroids">
-          <figure class="collage__polaroid collage__polaroid--left">
-            <img src="${collage.left}" alt="Laughing together" loading="lazy">
-            <figcaption>Emotion</figcaption>
-          </figure>
-          <figure class="collage__polaroid collage__polaroid--right">
-            <img src="${collage.right}" alt="Kiss on the cheek" loading="lazy">
-            <figcaption>Forever</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  `;
-}
+
 
 function renderEvents(events) {
   return `
@@ -251,7 +230,6 @@ function renderApp(target) {
       ${renderHero(CONTENT.hero)}
       ${renderIntro(CONTENT.intro)}
       ${renderCountdown(CONTENT.countdown)}
-      ${renderCollage(CONTENT.collage)}
       ${renderEvents(CONTENT.events)}
     </main>
     ${renderFooter(CONTENT.footer)}
