@@ -1,5 +1,37 @@
 'use strict';
 
+// Detect which person's page this is based on URL path, hash, or query parameter
+const getPersonFromPath = () => {
+  // Check query parameter first (easiest for local testing)
+  const urlParams = new URLSearchParams(window.location.search);
+  const person = urlParams.get('person');
+  if (person === 'komal' || person === 'uday') return person;
+  
+  // Check hash for file:// URLs (local testing)
+  const hash = window.location.hash.toLowerCase().replace('#', '');
+  if (hash === 'komal' || hash === 'uday') return hash;
+  
+  // Check path (for server-based URLs)
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('/komal')) return 'komal';
+  if (path.includes('/uday')) return 'uday';
+  
+  return 'uday'; // default to uday
+};
+
+const currentPerson = getPersonFromPath();
+
+const CONTACTS = {
+  uday: {
+    numbers: ['8284085451', '9418205451'],
+    label: "Groom's Family"
+  },
+  komal: {
+    numbers: ['7982738639', '9313599539'],
+    label: "Bride's Family"
+  }
+};
+
 const CONTENT = {
   nav: ['Home', 'Couple', 'Events', 'Contact'],
   hero: {
@@ -35,27 +67,29 @@ const CONTENT = {
   },
   events: [
     {
-      date: '24 March',
-      title: 'The Ceremony',
-      details: 'St. Anthony Church, 780 Ocean Drive, Miami, USA',
+      date: '21 Nov',
+      title: 'ANAND KARAJ',
+      details: 'Gurudwara Gadori Sahib, Shamshi, Kullu (HP)',
+      time: '10 AM',
       photo: 'assets/images/event-ceremony.jpg'
     },
     {
-      date: '24 March',
-      title: 'The Reception',
-      details: 'The Seaside Lounge, 900 Beach Ave, Miami, USA',
+      date: '21 Nov',
+      title: 'THE LUNCH/RECEPTION',
+      details: 'Smile Resorts, Mohal, Kullu (HP)',
+      time: '1 PM',
       photo: 'assets/images/event-reception.jpg'
     },
     {
-      date: '25 March',
-      title: 'The After Party',
-      details: 'The Palm Diner, 122 Ocean Blvd, Miami, USA',
+      date: '22 Nov',
+      title: 'DHAM/PRITIBHOJ',
+      details: 'Smile Resorts, Mohal, Kullu (HP)',
+      time: '1 PM onwards',
       photo: 'assets/images/event-afterparty.jpg'
     }
   ],
   footer: {
-    phoneLabel: 'Call us directly',
-    phone: '+00 252 365',
+    contacts: CONTACTS[currentPerson],
     emailLabel: 'Send a message',
     email: 'hello@udayandkomal.com',
     monogram: 'U <span class="monogram-heart">♥</span> K',
@@ -185,15 +219,42 @@ function renderEvents(events) {
         <div class="events__grid">
           ${events
       .map(
-        event => `
-            <article class="event-card">
+        (event, index) => `
+            <article class="event-card" data-event-id="${index}">
               <div class="event-card__media">
                 <img src="${event.photo}" alt="${event.title}" loading="lazy">
-                <span class="event-card__badge">${event.date}</span>
+                <div class="event-card__date-badge">
+                  <div class="event-card__date">
+                    <span class="event-card__date-day">${event.date.split(' ')[0]}</span>
+                    <span class="event-card__date-month">${event.date.split(' ')[1]}</span>
+                  </div>
+                </div>
+                <div class="event-card__expand-hint">
+                  <svg class="event-card__expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="12" cy="5" r="1"></circle>
+                    <circle cx="12" cy="19" r="1"></circle>
+                  </svg>
+                </div>
               </div>
-              <div class="event-card__body">
-                <h3 class="event-card__title">${event.title}</h3>
-                <p class="event-card__details">${event.details}</p>
+              <div class="event-card__details" data-details>
+                <div class="event-card__details-content">
+                  <h3 class="event-card__title">${event.title}</h3>
+                  <div class="event-card__location" data-location="${event.details}">
+                    <svg class="event-card__location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span class="event-card__address">${event.details}</span>
+                  </div>
+                  <div class="event-card__time">
+                    <svg class="event-card__time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    <span>${event.time}</span>
+                  </div>
+                </div>
               </div>
             </article>`
       )
@@ -205,12 +266,24 @@ function renderEvents(events) {
 }
 
 function renderFooter(footer) {
+  const contactNumbers = footer.contacts.numbers.map(number => {
+    const cleanNumber = number.replace(/[^0-9]/g, '');
+    const displayNumber = number.replace(/(\d{5})(\d{5})/, '$1 $2'); // Format as 12345 67890
+    return `
+      <a href="tel:+91${cleanNumber}" class="site-footer__link">
+        +91 ${displayNumber}
+      </a>
+    `;
+  }).join('');
+
   return `
     <footer class="site-footer" id="${SECTION_IDS.Contact}">
       <div class="container site-footer__bar">
         <div class="site-footer__item">
-          <span class="site-footer__label">${footer.phoneLabel}</span>
-          <a href="tel:${footer.phone.replace(/[^0-9+]/g, '')}" class="site-footer__link">${footer.phone}</a>
+          <span class="site-footer__label">${footer.contacts.label}</span>
+          <div class="site-footer__contacts">
+            ${contactNumbers}
+          </div>
         </div>
         <div class="site-footer__monogram">
           ${footer.monogram}
@@ -236,10 +309,19 @@ function renderApp(target) {
   `;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   const root = document.getElementById('app');
   renderApp(root);
   initCountdown();
+  initEventCards();
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
+
+// Listen for hash changes (for local testing)
+window.addEventListener('hashchange', () => {
+  // Re-detect person and re-render
+  window.location.reload();
 });
 
 function initCountdown() {
@@ -271,4 +353,77 @@ function initCountdown() {
 
   update();
   setInterval(update, 1000);
+}
+
+function initEventCards() {
+  const eventCards = document.querySelectorAll('.event-card');
+  
+  eventCards.forEach(card => {
+    // Handle card expansion on click/hover
+    const handleExpand = () => {
+      // Close other expanded cards
+      eventCards.forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.classList.remove('expanded');
+        }
+      });
+      
+      // Toggle current card
+      card.classList.toggle('expanded');
+    };
+
+    // Mobile: click to expand
+    card.addEventListener('click', (e) => {
+      // Don't expand if clicking on location (for map)
+      if (!e.target.closest('.event-card__location')) {
+        handleExpand();
+      }
+    });
+
+    // Desktop: hover to expand
+    if (window.innerWidth > 768) {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('expanded');
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('expanded');
+      });
+    }
+
+    // Handle map opening
+    const locationElement = card.querySelector('.event-card__location');
+    if (locationElement) {
+      locationElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const address = locationElement.dataset.location;
+        openMap(address);
+      });
+    }
+  });
+}
+
+function openMap(address) {
+  const encodedAddress = encodeURIComponent(address);
+  
+  // Try to open in native maps app first, fallback to Google Maps
+  const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // For mobile devices, try native maps first
+    const mapsUrl = `maps://maps.google.com/maps?q=${encodedAddress}`;
+    const googleMapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+    
+    // Try to open native maps app
+    window.location.href = mapsUrl;
+    
+    // Fallback to Google Maps in browser after a short delay
+    setTimeout(() => {
+      window.open(googleMapsUrl, '_blank');
+    }, 500);
+  } else {
+    // For desktop, open Google Maps in new tab
+    const googleMapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+    window.open(googleMapsUrl, '_blank');
+  }
 }
