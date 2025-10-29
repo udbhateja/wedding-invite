@@ -45,13 +45,11 @@ const CONTENT = {
     bride: {
       name: 'Komal',
       role: 'The Bride',
-      bio: '',
       social: ['facebook', 'instagram', 'dribbble']
     },
     groom: {
       name: 'Uday',
       role: 'The Groom',
-      bio: '',
       social: ['facebook', 'instagram', 'behance']
     }
   },
@@ -143,40 +141,34 @@ function renderHero(hero) {
 }
 
 function renderIntro(intro) {
-  const renderSocial = items =>
-    items
-      .map(
-        icon => `
-      <li>
-        <a class="profile-card__social" href="#" aria-label="${icon}">
-          <span class="profile-card__social-icon profile-card__social-icon--${icon}"></span>
-        </a>
-      </li>`
-      )
-      .join('');
-
-  const profileCard = (person, modifier) => `
-    <article class="profile-card profile-card--${modifier}">
-      <span class="eyebrow profile-card__role">${person.role}</span>
-      <h3 class="profile-card__name">${person.name}</h3>
-      <p class="profile-card__bio">${person.bio}</p>
-      <ul class="profile-card__social-list">
-        ${renderSocial(person.social)}
-      </ul>
-    </article>`;
-
   return `
     <section class="intro section" id="${SECTION_IDS.Couple}">
       <div class="container">
-        <header class="section-heading intro__heading">
+        <header class="intro__heading">
           <h2>${intro.heading}</h2>
+          <p class="intro__subtitle">Two hearts becoming one</p>
         </header>
-        <div class="intro__grid">
-          ${profileCard(intro.bride, 'bride')}
-          <figure class="intro__photo">
+        <div class="intro__content">
+          <div class="intro__couple-info">
+            <div class="couple-card couple-card--bride" style="animation-delay: 200ms">
+              <div class="couple-card__content">
+                <span class="couple-card__role">${intro.bride.role}</span>
+                <h3 class="couple-card__name">${intro.bride.name}</h3>
+              </div>
+            </div>
+            <div class="intro__divider">
+              <div class="intro__heart">♥</div>
+            </div>
+            <div class="couple-card couple-card--groom" style="animation-delay: 600ms">
+              <div class="couple-card__content">
+                <span class="couple-card__role">${intro.groom.role}</span>
+                <h3 class="couple-card__name">${intro.groom.name}</h3>
+              </div>
+            </div>
+          </div>
+          <figure class="intro__photo" style="animation-delay: 400ms">
             <img src="assets/images/intro-couple.jpg" alt="Komal and Uday" loading="lazy">
           </figure>
-          ${profileCard(intro.groom, 'groom')}
         </div>
       </div>
     </section>
@@ -231,9 +223,7 @@ function renderEvents(events) {
                 </div>
                 <div class="event-card__expand-hint">
                   <svg class="event-card__expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="12" cy="5" r="1"></circle>
-                    <circle cx="12" cy="19" r="1"></circle>
+                    <path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </div>
               </div>
