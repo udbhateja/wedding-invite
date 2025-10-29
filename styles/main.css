@@ -472,7 +472,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   padding-top: 40px;
 }
 
@@ -480,7 +480,7 @@ button {
 @media (min-width: 768px) {
   .hero__inner {
     min-height: 600px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     padding-top: 60px;
   }
 }
@@ -489,7 +489,7 @@ button {
 @media (min-width: 1200px) {
   .hero__inner {
     min-height: 650px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
     padding-top: 80px;
   }
 }
@@ -609,6 +609,7 @@ button {
 .intro {
   background: var(--color-background);
   overflow: hidden;
+  padding-top: var(--spacing-lg);
 }
 
 .intro__heading {
