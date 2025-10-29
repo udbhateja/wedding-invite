@@ -578,7 +578,7 @@ button {
     font-size: 1.1rem;
     letter-spacing: 0.15em;
   }
-  
+
   .hero__date {
     font-size: 0.95rem;
     letter-spacing: 0.2em;
@@ -591,7 +591,7 @@ button {
     font-size: 1.25rem;
     letter-spacing: 0.18em;
   }
-  
+
   .hero__date {
     font-size: 1rem;
     letter-spacing: 0.24em;
@@ -793,6 +793,18 @@ button {
   }
 }
 
+/* Mobile spacing adjustments */
+@media (max-width: 768px) {
+  .intro.section {
+    padding-bottom: var(--spacing-md);
+  }
+
+  .countdown.section {
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-xl);
+  }
+}
+
 .countdown {
   background: var(--color-background);
   position: relative;
@@ -912,6 +924,18 @@ button {
 
   .countdown__item:not(:last-child)::after {
     display: none;
+  }
+}
+
+/* Additional mobile spacing for very small screens */
+@media (max-width: 480px) {
+  .intro.section {
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .countdown.section {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-lg);
   }
 }
 
@@ -1118,11 +1142,11 @@ button {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-  
+
   .event-card__media {
     height: 350px;
   }
-  
+
   .event-card__date-badge {
     bottom: 6px;
     left: 6px;
@@ -1130,22 +1154,22 @@ button {
     width: 50px;
     height: 70px;
   }
-  
+
   .event-card__date-day {
     font-size: 1.6rem;
   }
-  
+
   .event-card__date-month {
     font-size: 0.8rem;
   }
-  
+
   .event-card__expand-hint {
     bottom: 16px;
     right: 16px;
     width: 36px;
     height: 36px;
   }
-  
+
   .event-card__expand-icon {
     width: 18px;
     height: 18px;
