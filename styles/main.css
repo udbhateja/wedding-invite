@@ -494,7 +494,7 @@ button {
   }
 }
 
-/* Hero content - simple layout without circle */
+/* Hero content with elegant card design */
 .hero__content {
   position: relative;
   z-index: 2;
@@ -503,8 +503,40 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-xl);
   padding: var(--spacing-lg);
+  animation: heroFadeIn 1.2s ease-out;
+}
+
+.hero__card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: clamp(320px, 35vw, 450px);
+  height: clamp(320px, 35vw, 450px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hero tag removed - no longer needed */
@@ -513,95 +545,196 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
 
-/* Mobile-first hero name typography */
-.hero__name {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  letter-spacing: 0.1em;
-  line-height: 1.1;
-  margin: 0;
-}
-
-/* Tablet and up */
-@media (min-width: 768px) {
-  .hero__name {
-    font-size: 2.5rem;
-    letter-spacing: 0.15em;
+/* Desktop adjustment - push names down slightly */
+@media (min-width: 769px) {
+  .hero__names {
+    margin-top: var(--spacing-md);
   }
 }
 
-/* Desktop */
-@media (min-width: 1200px) {
-  .hero__name {
-    font-size: clamp(3.5rem, 6vw, 4.5rem);
-    letter-spacing: 0.2em;
+/* Enhanced hero name typography */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 0.12em;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: nameSlideIn 0.8s ease-out both;
+}
+
+.hero__name:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.hero__name:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes nameSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .hero__name--bride {
-  background: linear-gradient(90deg, var(--color-accent-pink), #ff6f5b);
+  background: linear-gradient(90deg, var(--color-accent-pink), var(--color-accent-orange));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .hero__name--groom {
-  background: linear-gradient(90deg, #ffb44d, var(--color-text-primary));
+  background: linear-gradient(90deg, var(--color-accent-orange), var(--color-accent-pink));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
-/* Mobile-first hero typography */
+/* Enhanced hero typography */
 .hero__amp {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-light);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
   margin: 0;
+  font-weight: 400;
+  animation: ampFadeIn 0.8s ease-out 0.9s both;
+}
+
+.hero__date-info {
+  position: relative;
 }
 
 .hero__date {
-  font-size: 0.8rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-primary);
   margin: 0;
+  font-weight: 400;
+  animation: dateFadeIn 0.8s ease-out 1.2s both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1vw, 12px);
 }
 
-/* Tablet and up */
-@media (min-width: 768px) {
-  .hero__amp {
-    font-size: 1.1rem;
-    letter-spacing: 0.15em;
+.hero__date-day {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+}
+
+.hero__date-month,
+.hero__date-year {
+  font-weight: 400;
+}
+
+.hero__date-separator {
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+@keyframes ampFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
   }
 
-  .hero__date {
-    font-size: 0.95rem;
-    letter-spacing: 0.2em;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* Desktop */
-@media (min-width: 1200px) {
-  .hero__amp {
-    font-size: 1.25rem;
-    letter-spacing: 0.18em;
+@keyframes dateFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  .hero__date {
-    font-size: 1rem;
-    letter-spacing: 0.24em;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+}
+
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(10px);
   }
 }
 
-.hero__cta {
-  margin-top: var(--spacing-sm);
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero__card {
+    width: clamp(280px, 70vw, 350px);
+    height: clamp(280px, 70vw, 350px);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero__names {
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__scroll-indicator {
+    bottom: var(--spacing-md);
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__card {
+    width: clamp(260px, 75vw, 300px);
+    height: clamp(260px, 75vw, 300px);
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero__names {
+    margin-bottom: var(--spacing-sm);
+  }
 }
 
 

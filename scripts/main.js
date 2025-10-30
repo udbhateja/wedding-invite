@@ -134,6 +134,25 @@ function renderHero(hero) {
       </div>
       <div class="container hero__inner">
         <div class="hero__content">
+          <div class="hero__card">
+            <div class="hero__names">
+              <h1 class="hero__name hero__name--bride">${hero.names[0]}</h1>
+              <span class="hero__amp">AND</span>
+              <h1 class="hero__name hero__name--groom">${hero.names[1]}</h1>
+            </div>
+            <div class="hero__date-info">
+              <p class="hero__date">
+                <span class="hero__date-month">Nov</span>
+                <span class="hero__date-separator">|</span>
+                <span class="hero__date-day">21</span>
+                <span class="hero__date-separator">|</span>
+                <span class="hero__date-year">2025</span>
+              </p>
+            </div>
+          </div>
+          <div class="hero__scroll-indicator">
+            <div class="scroll-arrow"></div>
+          </div>
         </div>
       </div>
     </section>
