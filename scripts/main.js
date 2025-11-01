@@ -59,9 +59,9 @@ const CONTENT = {
     target: '2025-11-21T00:00:00'
   },
   collage: {
-    main: 'assets/images/collage-main.jpg',
-    left: 'assets/images/collage-polaroid-left.jpg',
-    right: 'assets/images/collage-polaroid-right.jpg'
+    main: 'assets/images/intro-couple.jpg',
+    left: 'assets/images/intro-couple.jpg',
+    right: 'assets/images/intro-couple.jpg'
   },
   events: [
     {
