@@ -644,6 +644,21 @@ button {
   animation: nameSlideIn 0.8s ease-out both;
 }
 
+/* Mobile name adjustments */
+@media (max-width: 768px) {
+  .hero__name {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__name {
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+    letter-spacing: 0.06em;
+  }
+}
+
 .hero__name:nth-child(1) {
   animation-delay: 0.3s;
 }
@@ -780,9 +795,9 @@ button {
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .hero__card {
-    width: clamp(280px, 70vw, 350px);
-    height: clamp(280px, 70vw, 350px);
-    padding: var(--spacing-md);
+    width: clamp(200px, 45vw, 240px);
+    height: clamp(200px, 45vw, 240px);
+    padding: var(--spacing-sm);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     background: 
       /* Smaller dots for mobile */
@@ -798,19 +813,18 @@ button {
   }
 
   .hero__card::before {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
 
   .hero__card::after {
-    width: 5px;
-    height: 5px;
+    width: 3px;
+    height: 3px;
   }
-}
 
   .hero__names {
     gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
   }
 
   .hero__scroll-indicator {
@@ -825,14 +839,28 @@ button {
 
 @media (max-width: 480px) {
   .hero__card {
-    width: clamp(260px, 75vw, 300px);
-    height: clamp(260px, 75vw, 300px);
-    padding: var(--spacing-sm);
+    width: clamp(160px, 40vw, 200px);
+    height: clamp(160px, 40vw, 200px);
+    padding: 12px;
     background: rgba(255, 255, 255, 0.92);
   }
 
   .hero__names {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 4px;
+    gap: 1px;
+  }
+
+  .hero__amp {
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  }
+
+  .hero__date {
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+    gap: clamp(3px, 0.4vw, 5px);
+  }
+
+  .hero__date-day {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   }
 }
 
