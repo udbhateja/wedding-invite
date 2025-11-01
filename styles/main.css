@@ -1012,12 +1012,13 @@ button {
   letter-spacing: 0.08em;
   margin: 0;
   font-weight: 400;
-}
-
-.couple-card__name {
-  background: linear-gradient(135deg, var(--color-text-primary), var(--color-accent-pink));
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-orange));
+  background-size: 100%;
+  background-repeat: no-repeat;
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
